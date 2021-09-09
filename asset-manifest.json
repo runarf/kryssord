@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/kryssord/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/kryssord/static/js/main.5ac80d64.chunk.js",
+    "main.js.map": "/kryssord/static/js/main.5ac80d64.chunk.js.map",
+    "runtime-main.js": "/kryssord/static/js/runtime-main.17a5dd5f.js",
+    "runtime-main.js.map": "/kryssord/static/js/runtime-main.17a5dd5f.js.map",
+    "static/css/2.a95be28f.chunk.css": "/kryssord/static/css/2.a95be28f.chunk.css",
+    "static/js/2.1c715b49.chunk.js": "/kryssord/static/js/2.1c715b49.chunk.js",
+    "static/js/2.1c715b49.chunk.js.map": "/kryssord/static/js/2.1c715b49.chunk.js.map",
+    "static/js/3.a44f65d3.chunk.js": "/kryssord/static/js/3.a44f65d3.chunk.js",
+    "static/js/3.a44f65d3.chunk.js.map": "/kryssord/static/js/3.a44f65d3.chunk.js.map",
+    "index.html": "/kryssord/index.html",
+    "static/css/2.a95be28f.chunk.css.map": "/kryssord/static/css/2.a95be28f.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/kryssord/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.1c715b49.chunk.js.LICENSE.txt": "/kryssord/static/js/2.1c715b49.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.17a5dd5f.js",
+    "static/css/2.a95be28f.chunk.css",
+    "static/js/2.1c715b49.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.5ac80d64.chunk.js"
+  ]
+}
