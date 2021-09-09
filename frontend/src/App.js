@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Input } from "antd";
 
 const backendUrl = `https://salty-gorge-71940.herokuapp.com/`; // `http://localhost:5000/`;
@@ -6,12 +6,13 @@ const backendUrl = `https://salty-gorge-71940.herokuapp.com/`; // `http://localh
 function App() {
   const [wordsByCountLetters, setWordsByCountLetters] = useState([]);
   const [loading, setLoading] = useState(false);
+  const searchRef = useRef();
 
   const fetchHtml = async (word) => {
+    searchRef.current.input.select();
     if (word.length === 0) {
       return;
     }
-    // const encodedWord encodeURIComponent(word)
     setLoading(true);
     const html = await fetch(`${backendUrl}${word}`).then((res) => res.json());
     window.history.replaceState({}, word, word);
@@ -19,54 +20,46 @@ function App() {
     setWordsByCountLetters(html);
   };
   return (
-    <div style={{}}>
+    <div>
+      <div
+        style={{
+          position: "sticky",
+          top: "0",
+        }}
+      >
+        <Input.Search
+          ref={searchRef}
+          onFocus={(event) => event.target.select()}
+          allowClear
+          loading={loading}
+          size="large"
+          enterButton="Search"
+          onSearch={(value) => fetchHtml(value)}
+        />
+      </div>
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
           // justifyContent: "center",
+          padding: "4px",
         }}
       >
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <div style={{}}>
-            <Input.Search
-              onFocus={(event) => event.target.select()}
-              allowClear
-              loading={loading}
-              size="large"
-              enterButton="Search"
-              onSearch={(value) => fetchHtml(value)}
-              onPressEnter={(event) => {
-                event.target.select();
-                fetchHtml(event.target.value);
-              }}
-            />
-          </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            // justifyContent: "center",
-            padding: "4px",
-          }}
-        >
-          {wordsByCountLetters.map(({ words, countLetters }) => {
-            return (
-              <div key={countLetters} style={{ padding: "4px" }}>
+        {wordsByCountLetters.map(({ words, countLetters }) => {
+          return (
+            <div key={countLetters} style={{ padding: "4px" }}>
+              <div>
+                <div>{countLetters} </div>
+              </div>
+              <div>
                 <div>
-                  <div>{countLetters} </div>
-                </div>
-                <div>
-                  <div>
-                    {words.map((word) => (
-                      <div>{word}</div>
-                    ))}
-                  </div>
+                  {words.map((word) => (
+                    <div>{word}</div>
+                  ))}
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
