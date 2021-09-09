@@ -5,18 +5,24 @@ import cors from "cors";
 const app = express();
 app.use(cors());
 
-const port = 3000;
+const port = 5000;
 
 app.get("/:word", async (req, res) => {
+  console.log(`Request for ${req.params.word}`);
   const body = await fetch(
     `https://www.gratiskryssord.no/kryssordbok/${req.params.word}/`
   ).then((res) => res.text());
   const dom = new jsdom.JSDOM(body).window.document;
-  const words = dom
-    .querySelector(`#staticPage`)
-    .querySelectorAll("section")
-    .values();
-  const words2 = Array.from(words).map((word) => {
+  const staticPage = dom.querySelector(`#staticPage`);
+
+  if (staticPage == null) {
+    res.send([]);
+    return;
+  }
+  const wordsArray = Array.from(
+    staticPage.querySelectorAll("section").values()
+  );
+  const words2 = wordsArray.map((word) => {
     const countLetters = word
       .querySelector("h2")
       .textContent.trim()
@@ -26,7 +32,7 @@ app.get("/:word", async (req, res) => {
       return word.textContent.trim();
     });
 
-    return { countLetters, word: wors };
+    return { countLetters, words: wors };
   });
   res.send(words2);
 });
