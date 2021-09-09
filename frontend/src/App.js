@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Input } from "antd";
 
-const backendUrl = `http://localhost:5000/`;
+const backendUrl = `https://salty-gorge-71940.herokuapp.com/`; // `http://localhost:5000/`;
 
 function App() {
   const [wordsByCountLetters, setWordsByCountLetters] = useState([]);

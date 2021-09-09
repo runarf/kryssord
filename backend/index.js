@@ -4,7 +4,8 @@ import jsdom from "jsdom";
 import cors from "cors";
 const app = express();
 app.use(cors());
-
+// heroku logs --tail
+// git subtree push --prefix backend heroku master
 const port = process.env.PORT; // 5000;
 
 app.get("/:word", async (req, res) => {
