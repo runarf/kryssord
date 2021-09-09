@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Input } from "antd";
 
+const backendUrl = `http://localhost:5000/`;
+
 function App() {
   const [wordsByCountLetters, setWordsByCountLetters] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -11,9 +13,7 @@ function App() {
     }
     // const encodedWord encodeURIComponent(word)
     setLoading(true);
-    const html = await fetch(`http://localhost:5000/${word}`).then((res) =>
-      res.json()
-    );
+    const html = await fetch(`${backendUrl}${word}`).then((res) => res.json());
     window.history.replaceState({}, word, word);
     setLoading(false);
     setWordsByCountLetters(html);
