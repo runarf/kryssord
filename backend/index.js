@@ -5,7 +5,7 @@ import cors from "cors";
 const app = express();
 app.use(cors());
 
-const port = 5000;
+const port = process.env.PORT; // 5000;
 
 app.get("/:word", async (req, res) => {
   console.log(`Request for ${req.params.word}`);
